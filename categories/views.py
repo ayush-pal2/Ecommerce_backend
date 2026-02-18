@@ -195,15 +195,14 @@ def category_bin(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def category_by_id(request,id):
-    if request.method == 'GET':
-        logger.info("Category List requested")
+    logger.info("Category List requested")
                 
-        category = Category.objects.filter(id=id).first()
+    category = Category.objects.filter(id=id).first()
         
-        if not category:
-            return Response({"message": "Category not found"}, status=404)
-        
-        return Response(category_to_dict(category))
+    if not category:
+        return Response({"message": "Category not found"}, status=404)
+    
+    return Response(category_to_dict(category))
 
 @api_view(['POST'])
 def register(request):

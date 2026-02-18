@@ -2873,3 +2873,38 @@ AttributeError: 'QuerySet' object has no attribute 'save'
 Watching for file changes with StatReloader
 Unauthorized: /product/get
 Product List requested
+Watching for file changes with StatReloader
+Unauthorized: /categories/get/
+Unauthorized: /categories/get/
+Category List requested
+Product List requested
+Unauthorized: /categories/getbyid/1
+Category List requested
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/ayush/ecommerce/categories/views.py changed, reloading.
+Watching for file changes with StatReloader
