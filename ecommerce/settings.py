@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'categories',
     'product',
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -136,10 +137,35 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    
 }
+
 
 AUTH_USER_MODEL = 'categories.User'
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
 }
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+        "file": {
+            "class": "logging.FileHandler",
+            "filename": "ecommerce.log",
+        },
+    },
+
+    "loggers": {
+        "": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+        },
+    },
+}
+
