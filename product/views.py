@@ -95,7 +95,7 @@ def get_product_by_categoryid(request,id):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated,IsAdmin])
 def update_product_com(request,id):
-    
+    logger.info("update product initialized")
     product = Product.objects.get(id=id)
     
     if not product:
@@ -128,6 +128,7 @@ def update_product_com(request,id):
 @api_view(['PATCH'])
 @permission_classes([IsAuthenticated,IsAdmin])
 def patch_product(request,id):
+    logger.info("some points to update product")
     product = Product.objects.get(id=id)
     
     if not product:
