@@ -40,7 +40,7 @@ def product_list(request):
     page_obj = paginator.get_page(page)
         
     data = [product_to_dict(prod) for prod in page_obj]
-        
+    logger.info("product list created")
     return Response({
             "count": paginator.count,
             "results": list(data)
@@ -51,6 +51,7 @@ def product_list(request):
 @permission_classes([IsAuthenticated,IsAdmin])
 def product_delete(request):
     Product.objects.filter(id=request.data.get('id')).update(is_deleted=True)
+    logger.info("product is deleted")
     return Response({'message':'Product moved to bin'})
     
 
@@ -58,23 +59,24 @@ def product_delete(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated,IsAdmin])
 def product_create(request):
-        name = request.data.get("name")
-        price = request.data.get("price")
-        category_id = request.data.get("category")
-        
-        category = Category.objects.filter(id=category_id).filter(is_deleted=False)
-        if not name and not price:
-            return Response({"message":"name and price is required"},status =400)
-        if not category:
-            return Response({"message":"category is required"},status=400)
-        
-        product = Product.objects.create(
-            name=name,
-            price = price,
-            category = category
-        )
-        logger.info("product created successfully")
-        return Response(product_to_dict(product),status=status.HTTP_201_CREATED)
+    logger.info("product list creation intialized")
+    name = request.data.get("name")
+    price = request.data.get("price")
+    category_id = request.data.get("category")
+
+    category = Category.objects.filter(id=category_id).filter(is_deleted=False)
+    if not name and not price:
+        return Response({"message":"name and price is required"},status =400)
+    if not category:
+        return Response({"message":"category is required"},status=400)
+    
+    product = Product.objects.create(
+        name=name,
+        price = price,
+        category = category
+    )
+    logger.info("product created successfully")
+    return Response(product_to_dict(product),status=status.HTTP_201_CREATED)
 
 
 @api_view(["get"])
