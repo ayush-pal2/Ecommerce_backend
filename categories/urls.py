@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import *
+from .views.categories_views import *
+
 
 urlpatterns = [
     path('get/', category_list),
@@ -10,5 +11,4 @@ urlpatterns = [
     path('delete',category_delete),
     path('bin/',category_bin),
     path('restore/',category_restore),
-    path('register/',register)
 ]

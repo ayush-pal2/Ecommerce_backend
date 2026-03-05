@@ -16,18 +16,25 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+from enum import Enum
+
+class UserRole(Enum):
+    ADMIN = "admin"
+    CUSTOMER = "customer"
+
+    @classmethod
+    def choices(cls):
+        return [(role.value, role.name.title()) for role in cls]
+
 class User(AbstractUser):
-    Role_choices =(
-        ('admin','Admin'),
-        ('customer','Customer')
+    role = models.CharField(
+        max_length=20,
+        choices=UserRole.choices(),
+        default=UserRole.CUSTOMER.value
     )
-    role = models.CharField(max_length=20,choices=Role_choices,default='customer')
-    
+
     def is_admin(self):
-        return self.role =='admin'
-    
+        return self.role == UserRole.ADMIN.value
+
     def is_customer(self):
-        return self.role == 'customer'
-    
-    
-    
+        return self.role == UserRole.CUSTOMER.value

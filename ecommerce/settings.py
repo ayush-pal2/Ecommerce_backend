@@ -144,7 +144,7 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'categories.User'
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes = 1),
 }
 
 LOGGING = {
@@ -155,15 +155,12 @@ LOGGING = {
         "console": {
             "class": "logging.StreamHandler",
         },
-        "file": {
-            "class": "logging.FileHandler",
-            "filename": "ecommerce.log",
-        },
+        
     },
 
     "loggers": {
         "": {
-            "handlers": ["console", "file"],
+            "handlers": ["console"],
             "level": "INFO",
         },
     },

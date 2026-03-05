@@ -17,10 +17,32 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from rest_framework_simplejwt.views import TokenObtainPairView
+from categories.views.user_views import login_user, register
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
+
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Ecommerce API",
+      default_version='v1',
+      description="API documentation for Ecommerce Backend",
+      contact=openapi.Contact(email="admin@gmail.com"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
-    path('login/', TokenObtainPairView.as_view()),
+    path('login/user',login_user),
+    path('register/user',register),
+
     path('admin/', admin.site.urls),
     path('categories/',include('categories.urls')),
     path('product/',include('product.urls')),
+    
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0)),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0)),
+    
 ]
